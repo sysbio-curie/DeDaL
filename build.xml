@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="DeDaL">
+    <property environment="env"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.8"/>
+    <property name="source" value="1.8"/>
+    <path id="DeDaL.classpath">
+        <pathelement location="bin"/>
+        <pathelement location="lib/cytoscape-swing-app-api-3.1.0.jar"/>
+        <pathelement location="lib/ocap-api-1.2.jar"/>
+        <pathelement location="lib/VDAOEngine.jar"/>
+    </path>
+                <target name="init">
+                                 <mkdir dir="bin"/>
+                                 <copy includeemptydirs="false" todir="bin">
+                                     <fileset dir="src">
+                                         <exclude name="**/*.java"/>
+                                     </fileset>
+                                 </copy>
+                             </target>
+                             <target name="clean">
+                                 <delete dir="bin"/>
+                             </target>
+                             <target depends="clean" name="cleanall"/>
+                             <target depends="build-subprojects,build-project" name="build"/>
+                             <target name="build-subprojects"/>
+                             <target depends="init" name="build-project">
+                                 <echo message="${ant.project.name}: ${ant.file}"/>
+                                 <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+                                     <src path="src"/>
+                                     <classpath refid="DeDaL.classpath"/>
+                                 </javac>
+                             </target>
+                             <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+                                       	<target name="copy-non-java-files">
+                                       			<copy todir="bin" includeemptydirs="false">
+                                       				<fileset dir="src" excludes="**/*.java" />
+                                       			</copy>
+                                       		</target>
+
+                                       		<target name="compile-jar-classes" depends="clean,copy-non-java-files">
+                                       			<javac srcdir="src" destdir="bin" classpathref="jar-project-classpath" />
+                                       		</target>
+                                       	<target name="clean-jar">
+                                       			<delete dir="build" />
+                                       			<mkdir dir="build" />
+                                       		</target>
+
+                                       		<target name="jar">
+                                       			<jar basedir="bin" destfile="build/DeDaL.jar">
+                                       				<manifest>
+                                       					<attribute name="Manifest-Version" value="1.0" />
+                                       					<attribute name="Cytoscape-API-Compatibility" value="3.0" />
+                                       					<attribute name="Cytoscape-App" value="fr.curie.DeDaL.DedalApp" />
+                                       					<attribute name="Cytoscape-App-Name" value="DeDaL" />
+                                       					<attribute name="Cytoscape-App-Version" value="0.1" />
+                                       				</manifest>
+                                       			</jar>
+                                       		</target>
+                                       	<target name="build-jar">
+                                       			<antcall target="compile-jar-classes" />
+                                       			<antcall target="clean-jar" />
+                                       			<antcall target="jar" />
+                                       		</target>
+                                       </project>
