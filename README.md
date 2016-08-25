@@ -13,15 +13,15 @@ For complete description please refer to http://www.biomedcentral.com/1752-0509/
 A non-biological application to International Currency Exchange data can be found at http://urszulaczerwinska.github.io/works/DeDaL.
 
 ##Installation
-To install in the Cytoscape 3.0 
-1. Open Cytoscape 3.0
-2. `Application manager -> Install from file...` 
-3. Load **DeDaL.jar**
+To install in the Cytoscape 3.0   
+1. Open Cytoscape 3.0  
+2. `Application manager -> Install from file...`   
+3. Load **DeDaL.jar**  
 
-If you want to compile yourself:
-`git clone https://github.com/sysbio-curie/DeDaL/ .`
-`ant jar`
-**DeDaL.jar** will appear in ./build/
+If you want to compile yourself:  
+`git clone https://github.com/sysbio-curie/DeDaL/ .`  
+`ant jar`  
+**DeDaL.jar** will appear in ./build/  
 
 
 
